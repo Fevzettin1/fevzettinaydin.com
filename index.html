@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fevzettin Aydın — Hazırlanıyor</title>
+  <meta name="description" content="fevzettinaydin.com hazırlanıyor. Kişisel sayfa çok yakında.">
+  <meta name="theme-color" content="#0b0d10">
+  <meta property="og:title" content="Fevzettin Aydın — Hazırlanıyor">
+  <meta property="og:description" content="Kişisel sayfa çok yakında.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fevzettinaydin.com/">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23f2b24c'%3Efa%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --ink: #ece8df;
+      --muted: #8a8f98;
+      --faint: #2a2f37;
+      --accent: #f2b24c;
+      --ok: #7fd1a8;
+      --serif: "Instrument Serif", Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    canvas#net {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0
+    }
+
+    /* yumuşak vinyet + ince grid */
+    .veil {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 45%, transparent 0%, rgba(11, 13, 16, .55) 60%, rgba(11, 13, 16, .95) 100%),
+        linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px) 0 0/100% 48px,
+        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px) 0 0/48px 100%;
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 28px clamp(16px, 5vw, 64px);
+    }
+
+    header,
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    .mono-mark {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 26px;
+      letter-spacing: 0;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(242, 178, 76, .6);
+      animation: pulse 2s infinite
+    }
+
+    @keyframes pulse {
+      70% {
+        box-shadow: 0 0 0 10px rgba(242, 178, 76, 0)
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(242, 178, 76, 0)
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 980px;
+      padding: 48px 0
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px
+    }
+
+    .eyebrow b {
+      color: var(--accent);
+      font-weight: 400
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(56px, 11vw, 148px);
+      line-height: .92;
+      letter-spacing: -.02em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    h1 span {
+      display: block;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards
+    }
+
+    h1 span:nth-child(2) {
+      animation-delay: .12s
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .tag {
+      margin-top: 26px;
+      font-size: clamp(13px, 1.6vw, 15px);
+      color: var(--muted);
+      letter-spacing: .04em
+    }
+
+    .tag span {
+      white-space: nowrap
+    }
+
+    .tag i {
+      font-style: normal;
+      color: var(--faint);
+      margin: 0 .6em
+    }
+
+    .build {
+      margin-top: 48px;
+      max-width: 560px;
+      border-top: 1px solid var(--faint);
+      padding-top: 20px
+    }
+
+    .build-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-bottom: 10px
+    }
+
+    .build-row strong {
+      color: var(--ink);
+      font-weight: 400
+    }
+
+    .bar {
+      height: 2px;
+      background: var(--faint);
+      position: relative;
+      overflow: hidden
+    }
+
+    .bar i {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0;
+      background: var(--accent);
+      transition: width .4s ease
+    }
+
+    .bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 30%;
+      background: linear-gradient(90deg, transparent, rgba(242, 178, 76, .5), transparent);
+      animation: scan 2.4s linear infinite
+    }
+
+    @keyframes scan {
+      from {
+        transform: translateX(-100%)
+      }
+
+      to {
+        transform: translateX(400%)
+      }
+    }
+
+    .log {
+      margin-top: 16px;
+      font-size: 13px;
+      min-height: 1.6em;
+      color: var(--ink)
+    }
+
+    .log .ok {
+      color: var(--ok)
+    }
+
+    .log .caret {
+      display: inline-block;
+      width: .6em;
+      height: 1.1em;
+      background: var(--accent);
+      vertical-align: -.15em;
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    footer a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--faint);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s
+    }
+
+    footer a:hover,
+    footer a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      outline: none
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap
+    }
+
+    @media (max-width:640px) {
+
+      header .hide-sm,
+      footer .hide-sm {
+        display: none
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .build {
+        margin-top: 36px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important
+      }
+
+      h1 span {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+
+  <div class="page">
+    <header>
+      <div class="mono-mark" aria-label="FA">fa.</div>
+      <div class="status"><span class="dot"></span><span>yapım aşamasında</span></div>
+    </header>
+
+    <main>
+      <p class="eyebrow"><span lang="en">fevzettinaydin.com</span> <b>/</b> v0.1</p>
+      <h1><span>Fevzettin</span><span><em>Aydın</em></span></h1>
+      <p class="tag"><span> </span><i>/</i><span> </span><i>/</i><span> </span></p>
+
+      <section class="build" aria-live="polite">
+        <div class="build-row"><span>Site hazırlanıyor</span><strong id="pct">0%</strong></div>
+        <div class="bar"><i id="fill"></i></div>
+        <p class="log" id="log"></p>
+      </section>
+    </main>
+
+    <footer>
+      <div><a href="mailto:fevzettin@fevzettinaydin.com">fevzettin@fevzettinaydin.com</a></div>
+      <div class="links">
+        <a href="https://github.com/Fevzettin1" target="_blank" rel="noopener">GitHub</a>
+        <span class="hide-sm">© <span id="yr">2026</span></span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    /* ---------- Yükleme çubuğu + log ---------- */
+    (function () {
+      var lines = [
+        "çekirdek modüller derleniyor",
+        "edge düğümleri senkronize ediliyor",
+        "firmware imzası doğrulanıyor",
+        "TLS sertifikası hazırlanıyor",
+        "içerik yazılıyor",
+        "son %13 her zaman en zoru"
+      ];
+      var log = document.getElementById("log"),
+        pct = document.getElementById("pct"),
+        fill = document.getElementById("fill");
+      document.getElementById("yr").textContent = new Date().getFullYear();
+
+      var p = 0, target = 87;
+      function tick() {
+        if (p < target) { p += Math.max(0.15, (target - p) * 0.035); }
+        var v = Math.min(target, Math.round(p));
+        pct.textContent = v + "%";
+        fill.style.width = v + "%";
+        if (p < target) requestAnimationFrame(tick);
+      }
+      setTimeout(tick, 600);
+
+      var i = 0;
+      function typeLine() {
+        var text = lines[i % lines.length], n = 0;
+        log.innerHTML = '<span class="ok">[ ok ]</span> <span id="t"></span><span class="caret"></span>';
+        var t = document.getElementById("t");
+        (function step() {
+          t.textContent = text.slice(0, ++n);
+          if (n < text.length) setTimeout(step, 28 + Math.random() * 40);
+          else { i++; setTimeout(typeLine, 2200); }
+        })();
+      }
+      setTimeout(typeLine, 900);
+    })();
+
+    /* ---------- Ağ / düğüm arka planı ---------- */
+    (function () {
+      var c = document.getElementById("net"), ctx = c.getContext("2d");
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var W, H, dpr, nodes = [], packets = [], mouse = { x: -1e4, y: -1e4 };
+      var LINK = 150;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = c.clientWidth; H = c.clientHeight;
+        c.width = W * dpr; c.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var count = Math.round(Math.min(110, (W * H) / 14000));
+        nodes = [];
+        for (var k = 0; k < count; k++) {
+          nodes.push({
+            x: Math.random() * W, y: Math.random() * H,
+            vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
+            r: Math.random() < .08 ? 2.2 : 1.1
+          });
+        }
+        packets = [];
+      }
+
+      function spawnPacket() {
+        var a = nodes[(Math.random() * nodes.length) | 0], best = null, bd = LINK;
+        for (var j = 0; j < nodes.length; j++) {
+          var b = nodes[j]; if (b === a) continue;
+          var d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < bd && d > 40) { bd = d; best = b; }
+        }
+        if (best) packets.push({ a: a, b: best, t: 0, s: .008 + Math.random() * .012 });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < nodes.length; i++) {
+          var n = nodes[i];
+          if (!reduce) {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > W) n.vx *= -1;
+            if (n.y < 0 || n.y > H) n.vy *= -1;
+            var dx = mouse.x - n.x, dy = mouse.y - n.y, dm = Math.hypot(dx, dy);
+            if (dm < 180) { n.x += dx * .0025; n.y += dy * .0025; }
+          }
+          for (var j = i + 1; j < nodes.length; j++) {
+            var m = nodes[j], d = Math.hypot(n.x - m.x, n.y - m.y);
+            if (d < LINK) {
+              ctx.strokeStyle = "rgba(236,232,223," + (0.14 * (1 - d / LINK)) + ")";
+              ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
+            }
+          }
+        }
+        for (var q = 0; q < nodes.length; q++) {
+          var o = nodes[q];
+          ctx.fillStyle = o.r > 2 ? "rgba(242,178,76,.85)" : "rgba(236,232,223,.45)";
+          ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2); ctx.fill();
+        }
+        for (var p = packets.length - 1; p >= 0; p--) {
+          var pk = packets[p]; pk.t += pk.s;
+          if (pk.t >= 1) { packets.splice(p, 1); continue; }
+          var px = pk.a.x + (pk.b.x - pk.a.x) * pk.t, py = pk.a.y + (pk.b.y - pk.a.y) * pk.t;
+          ctx.fillStyle = "rgba(242,178,76,.9)";
+          ctx.shadowColor = "rgba(242,178,76,.8)"; ctx.shadowBlur = 8;
+          ctx.beginPath(); ctx.arc(px, py, 1.6, 0, Math.PI * 2); ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+        if (!reduce && packets.length < 14 && Math.random() < .06) spawnPacket();
+      }
+
+      var running = true;
+      function loop() { if (running) { draw(); requestAnimationFrame(loop); } }
+      document.addEventListener("visibilitychange", function () {
+        running = !document.hidden && !reduce;
+        if (running) loop();
+      });
+      window.addEventListener("resize", function () { resize(); if (reduce) draw(); });
+      window.addEventListener("pointermove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+      window.addEventListener("pointerleave", function () { mouse.x = mouse.y = -1e4; });
+
+      resize();
+      if (reduce) draw(); else loop();
+    })();
+  </script>
+</body>
+
+</html>
