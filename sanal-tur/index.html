@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sanal Tur — Toplu Konut Projesi</title>
+  <meta name="description" content="DWG çizimlerinden üretilmiş fotogerçekçi site görselleri ve vaziyet planı.">
+  <meta name="theme-color" content="#0b0d10">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23f2b24c'%3Efa%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0b0d10; --card:#12151a; --ink:#ece8df; --muted:#8a8f98; --faint:#2a2f37; --accent:#f2b24c;
+      --serif:"Instrument Serif", Georgia, serif; --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+    * { box-sizing:border-box; margin:0; padding:0 }
+    body { background:var(--bg); color:var(--ink); font-family:var(--mono); font-weight:300; -webkit-font-smoothing:antialiased; line-height:1.5 }
+    a { color:inherit }
+    .wrap { max-width:1240px; margin:0 auto; padding:28px clamp(16px,5vw,64px) 64px }
+    header { display:flex; justify-content:space-between; align-items:center; font-size:12px; letter-spacing:.08em; color:var(--muted) }
+    .mark { font-family:var(--serif); font-style:italic; font-size:26px; color:var(--accent); text-decoration:none; line-height:1 }
+    header nav { display:flex; gap:22px }
+    header nav a { text-decoration:none; border-bottom:1px solid var(--faint); padding-bottom:2px }
+    header nav a:hover, header nav a:focus-visible { color:var(--accent); border-color:var(--accent); outline:none }
+    .hero { padding:72px 0 40px; max-width:820px }
+    .eyebrow { font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:18px }
+    h1 { font-family:var(--serif); font-weight:400; font-size:clamp(52px,9vw,112px); line-height:.95; letter-spacing:-.02em }
+    h1 em { color:var(--accent) }
+    .lead { margin-top:22px; color:var(--muted); font-size:14px; max-width:640px }
+    .facts { margin-top:28px; display:flex; flex-wrap:wrap; gap:10px 28px; font-size:12px; color:var(--muted); letter-spacing:.06em }
+    .facts b { color:var(--ink); font-weight:400 }
+    h2 { font-family:var(--serif); font-weight:400; font-size:clamp(30px,4vw,44px); line-height:1; margin:56px 0 8px }
+    h2 em { color:var(--accent) }
+    .sec-note { color:var(--muted); font-size:13px; margin-bottom:24px }
+    .tours { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px }
+    .tour { display:flex; flex-direction:column; background:var(--card); border:1px solid var(--faint); border-radius:10px; overflow:hidden; text-decoration:none; transition:border-color .2s, transform .2s }
+    .tour:hover, .tour:focus-visible { border-color:var(--accent); transform:translateY(-2px); outline:none }
+    .tour img { display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; background:#1a1e24 }
+    .tour-body { padding:16px 18px 18px; display:flex; flex-direction:column; gap:4px; flex:1 }
+    .tip { font-size:11px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase }
+    .tour h3 { font-family:var(--serif); font-weight:400; font-size:28px; line-height:1.05 }
+    .meta { font-size:12px; color:var(--muted) }
+    .go { margin-top:auto; padding-top:12px; font-size:12px; letter-spacing:.08em }
+    .tour:hover .go { color:var(--accent) }
+    .stills { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px }
+    .stills .grp { grid-column:1/-1; margin:18px 0 0; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent) }
+    .stills .grp:first-child { margin-top:0 }
+    .still .tag { margin-left:8px; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--faint); border-radius:999px; padding:1px 7px }
+    .still.wide { grid-column:1 / -1 }
+    .still button { display:block; width:100%; border:0; padding:0; background:#1a1e24; cursor:zoom-in; border-radius:8px; overflow:hidden }
+    .still button:focus-visible { outline:2px solid var(--accent); outline-offset:2px }
+    .still img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; transition:transform .4s }
+    .still button:hover img { transform:scale(1.03) }
+    .still figcaption { font-size:12px; color:var(--muted); padding:8px 2px 0 }
+    .still figcaption b { color:var(--accent); font-weight:400; margin-right:4px }
+    .plan-tools { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px }
+    .chip { font:inherit; font-size:12px; color:var(--ink); background:var(--card); border:1px solid var(--faint); border-radius:999px; padding:6px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:8px }
+    .chip[aria-pressed="false"] { color:var(--muted); opacity:.6 }
+    .chip:hover, .chip:focus-visible { border-color:var(--accent); outline:none }
+    .chip i { display:inline-block; width:12px; height:12px; border-radius:50% }
+    .chip i.c { background:var(--accent) } .chip i.h { background:#fff; border:2px solid #2f6f5a }
+    .plan { position:relative; border-radius:10px; overflow:hidden; border:1px solid var(--faint); background:#1a1e24; user-select:none }
+    .plan picture, .plan img.base { display:block; width:100% }
+    .plan img.base { height:auto }
+    .layer { position:absolute; inset:0 }
+    .layer.off { display:none }
+    .mk { position:absolute; transform:translate(-50%,-50%); border:0; padding:0; cursor:pointer; font:inherit }
+    .mk:focus-visible { outline:2px solid #fff; outline-offset:3px }
+    .cam { width:26px; height:26px; border-radius:50%; background:var(--accent); color:#111; font-size:11px; font-weight:500; display:grid; place-items:center; box-shadow:0 1px 6px rgba(0,0,0,.55); z-index:3 }
+    .cam.air { background:#fff }
+    .cone { position:absolute; left:50%; top:50%; width:76px; height:56px; margin-top:-28px; transform-origin:0 50%; pointer-events:none;
+      clip-path:polygon(0 50%,100% 0,100% 100%); background:linear-gradient(90deg,rgba(242,178,76,.95) 20%,rgba(242,178,76,.05)); z-index:-1 }
+    .cam.air .cone { background:linear-gradient(90deg,rgba(255,255,255,.9) 20%,rgba(255,255,255,.05)) }
+    .house { width:22px; height:22px; border-radius:50%; background:#fff; border:2px solid #2f6f5a; display:grid; place-items:center; box-shadow:0 1px 6px rgba(0,0,0,.5); z-index:2 }
+    .house svg { width:12px; height:12px; fill:#2f6f5a }
+    .house.hl { background:#2f6f5a } .house.hl svg { fill:#fff }
+    .mk:hover { transform:translate(-50%,-50%) scale(1.15); z-index:4 }
+    .ptip { position:absolute; z-index:6; pointer-events:none; background:rgba(11,13,16,.92); border:1px solid var(--faint); border-radius:6px; padding:4px 8px; font-size:11px; white-space:nowrap; transform:translate(-50%,calc(-100% - 18px)); display:none }
+    .pop { position:absolute; z-index:7; width:250px; background:var(--card); border:1px solid var(--accent); border-radius:10px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.6); display:none }
+    .pop img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; background:#1a1e24 }
+    .pop div { padding:10px 12px 12px }
+    .pop h3 { font-family:var(--serif); font-weight:400; font-size:24px; line-height:1.05 }
+    .pop p { font-size:11px; color:var(--muted); margin:2px 0 10px }
+    .pop a { display:inline-block; font-size:12px; text-decoration:none; background:var(--accent); color:#111; border-radius:999px; padding:6px 12px }
+    .pop .x { position:absolute; top:6px; right:6px; width:28px; height:28px; border-radius:50%; border:0; background:rgba(11,13,16,.75); color:var(--ink); font-size:16px; cursor:pointer }
+    @media (max-width:759px) {
+      .cam { width:20px; height:20px; font-size:9px }
+      .cone { width:42px; height:30px; margin-top:-15px }
+      .house { width:17px; height:17px; border-width:1.5px } .house svg { width:9px; height:9px }
+      .pop { width:220px }
+    }
+    footer { margin-top:64px; border-top:1px solid var(--faint); padding-top:20px; font-size:11px; color:var(--muted); display:grid; gap:8px }
+    dialog { border:0; padding:0; background:transparent; max-width:none; max-height:none; width:100vw; height:100dvh; margin:0 }
+    dialog::backdrop { background:rgba(5,6,8,.94) }
+    .lb { position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:48px 64px }
+    .lb img { max-width:100%; max-height:calc(100dvh - 120px); object-fit:contain; border-radius:6px }
+    .lb p { color:var(--ink); font-size:13px }
+    .lb button { position:absolute; background:rgba(18,21,26,.8); color:var(--ink); border:1px solid var(--faint); border-radius:50%; width:44px; height:44px; font:inherit; font-size:20px; cursor:pointer }
+    .lb button:hover, .lb button:focus-visible { border-color:var(--accent); color:var(--accent); outline:none }
+    .lb .x { top:16px; right:16px } .lb .prev { left:12px; top:50% } .lb .next { right:12px; top:50% }
+    @media (max-width:640px) { .lb { padding:56px 8px } .lb .prev, .lb .next { top:auto; bottom:14px } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="mark" href="../" aria-label="Ana sayfa">fa</a>
+      <nav><a href="#plan">Plan</a><a href="#turlar">Turlar</a><a href="#gorseller">Görseller</a></nav>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Toplu Konut Projesi — Sanal Tur</p>
+      <h1>Sanal <em>Tur</em></h1>
+      <p class="lead">Mimari DWG çizimlerinden otomatik üretilen 3B modelin fiziksel tabanlı (Blender Cycles) 360° görselleştirmeleri.
+        Her konut kendi turunda; odalar arasında yerdeki halkalarla ya da kat planından gezilir.</p>
+      <p class="facts"><span><b>1</b> konut turu</span><span><b>18</b> panorama noktası</span><span><b>60</b> örnek görsel</span><span>6144 px HD</span></p>
+    </section>
+
+    <h2 id="plan"><em>Vaziyet</em> planı</h2>
+    <p class="sec-note">Numaralı noktalar örnek görsellerin çekildiği yerlerdir; ev simgeleri o konutun 360° turunu açar.</p>
+    <div class="plan-tools">
+      <button class="chip" type="button" data-layer="cams" aria-pressed="true"><i class="c"></i>Örnek görseller</button>
+      <button class="chip" type="button" data-layer="houses" aria-pressed="true"><i class="h"></i>Konutlar</button>
+    </div>
+    <div class="plan" id="planBox">
+      <picture>
+        <source media="(min-width: 760px)" srcset="plan/plan_yatay.jpg">
+        <img class="base" src="plan/plan_dikey.jpg" alt="Sitenin üstten görünümü">
+      </picture>
+      <div class="layer" id="lyHouses"></div>
+      <div class="layer" id="lyCams"></div>
+      <div class="ptip" id="planTip"></div>
+      <div class="pop" id="planPop" role="dialog" aria-label="Konut">
+        <button class="x" type="button" aria-label="Kapat">×</button>
+        <img alt="">
+        <div><h3></h3><p></p><a href="#">360° turu aç →</a></div>
+      </div>
+    </div>
+
+    <h2 id="turlar"><em>Konutlar</em></h2>
+    <p class="sec-note">Sürükleyerek bakın, halkalara tıklayarak ilerleyin. Mobilde jiroskop ve tam ekran desteklenir.</p>
+    <div class="tours">
+      <a class="tour" href="linden-twice/">
+        <img src="kapak/linden-twice.jpg" alt="Linden Twice Villa B Blok dış görünüm" loading="lazy" width="1200" height="750">
+        <div class="tour-body">
+          <h3>Linden Twice Villa B Blok</h3>
+          <p class="meta">18 nokta · Bodrum Kat · Zemin Kat · 1. Kat · Çatı Katı</p>
+          <span class="go">Turu aç <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
+
+    <h2 id="gorseller"><em>Örnek</em> görseller</h2>
+    <p class="sec-note">Site içi, çevre, teras ve iç mekân görünümleri — tam ekranda açmak için görsele dokunun.</p>
+    <div class="stills">
+      <p class="grp">Site içi ve teraslar</p>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/01_giris.jpg" data-cap="01 · Girişten ana yola bakış" aria-label="Girişten ana yola bakış — büyüt">
+          <img src="gorseller/thumb/01_giris.jpg" alt="Girişten ana yola bakış" loading="lazy">
+        </button>
+        <figcaption><b>01</b> Girişten ana yola bakış</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/02_avlu_havuz.jpg" data-cap="02 · Avlu ve büyük havuz (Lavender / Carnation)" aria-label="Avlu ve büyük havuz (Lavender / Carnation) — büyüt">
+          <img src="gorseller/thumb/02_avlu_havuz.jpg" alt="Avlu ve büyük havuz (Lavender / Carnation)" loading="lazy">
+        </button>
+        <figcaption><b>02</b> Avlu ve büyük havuz (Lavender / Carnation)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/03_spor_oyun.jpg" data-cap="03 · Spor alanı ve çocuk oyun alanı" aria-label="Spor alanı ve çocuk oyun alanı — büyüt">
+          <img src="gorseller/thumb/03_spor_oyun.jpg" alt="Spor alanı ve çocuk oyun alanı" loading="lazy">
+        </button>
+        <figcaption><b>03</b> Spor alanı ve çocuk oyun alanı</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/04_sera_sokagi.jpg" data-cap="04 · Sera sokağı" aria-label="Sera sokağı — büyüt">
+          <img src="gorseller/thumb/04_sera_sokagi.jpg" alt="Sera sokağı" loading="lazy">
+        </button>
+        <figcaption><b>04</b> Sera sokağı</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/05_linden_twice.jpg" data-cap="05 · Linden Twice sırası" aria-label="Linden Twice sırası — büyüt">
+          <img src="gorseller/thumb/05_linden_twice.jpg" alt="Linden Twice sırası" loading="lazy">
+        </button>
+        <figcaption><b>05</b> Linden Twice sırası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/06_koza.jpg" data-cap="06 · Koza villaları ve havuzları" aria-label="Koza villaları ve havuzları — büyüt">
+          <img src="gorseller/thumb/06_koza.jpg" alt="Koza villaları ve havuzları" loading="lazy">
+        </button>
+        <figcaption><b>06</b> Koza villaları ve havuzları</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/07_gardenia.jpg" data-cap="07 · Gardenia A/B önü" aria-label="Gardenia A/B önü — büyüt">
+          <img src="gorseller/thumb/07_gardenia.jpg" alt="Gardenia A/B önü" loading="lazy">
+        </button>
+        <figcaption><b>07</b> Gardenia A/B önü</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/08_linden_one_havuz.jpg" data-cap="08 · Linden One ve yuvarlak havuzlu teras" aria-label="Linden One ve yuvarlak havuzlu teras — büyüt">
+          <img src="gorseller/thumb/08_linden_one_havuz.jpg" alt="Linden One ve yuvarlak havuzlu teras" loading="lazy">
+        </button>
+        <figcaption><b>08</b> Linden One ve yuvarlak havuzlu teras</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/09_rose_otopark.jpg" data-cap="09 · Rose / Begonvil tarafı ve otopark" aria-label="Rose / Begonvil tarafı ve otopark — büyüt">
+          <img src="gorseller/thumb/09_rose_otopark.jpg" alt="Rose / Begonvil tarafı ve otopark" loading="lazy">
+        </button>
+        <figcaption><b>09</b> Rose / Begonvil tarafı ve otopark</figcaption>
+      </figure>
+      <figure class="still wide">
+        <button type="button" data-full="gorseller/full/10_havadan.jpg" data-cap="10 · Havadan genel görünüm" aria-label="Havadan genel görünüm — büyüt">
+          <img src="gorseller/thumb/10_havadan.jpg" alt="Havadan genel görünüm" loading="lazy">
+        </button>
+        <figcaption><b>10</b> Havadan genel görünüm</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/11_gardenia_cati.jpg" data-cap="11 · Gardenia çatı terası" aria-label="Gardenia çatı terası — büyüt">
+          <img src="gorseller/thumb/11_gardenia_cati.jpg" alt="Gardenia çatı terası" loading="lazy">
+        </button>
+        <figcaption><b>11</b> Gardenia çatı terası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/12_gardenia_balkon.jpg" data-cap="12 · Gardenia 1. kat balkonu" aria-label="Gardenia 1. kat balkonu — büyüt">
+          <img src="gorseller/thumb/12_gardenia_balkon.jpg" alt="Gardenia 1. kat balkonu" loading="lazy">
+        </button>
+        <figcaption><b>12</b> Gardenia 1. kat balkonu</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/13_lavender_teras.jpg" data-cap="13 · Lavender üst kat galerisinden havuz avlusuna" aria-label="Lavender üst kat galerisinden havuz avlusuna — büyüt">
+          <img src="gorseller/thumb/13_lavender_teras.jpg" alt="Lavender üst kat galerisinden havuz avlusuna" loading="lazy">
+        </button>
+        <figcaption><b>13</b> Lavender üst kat galerisinden havuz avlusuna</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/14_linden_triple_teras.jpg" data-cap="14 · Linden Triple çatı terası" aria-label="Linden Triple çatı terası — büyüt">
+          <img src="gorseller/thumb/14_linden_triple_teras.jpg" alt="Linden Triple çatı terası" loading="lazy">
+        </button>
+        <figcaption><b>14</b> Linden Triple çatı terası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/15_sera_balkon.jpg" data-cap="15 · Sera 1. kat balkonu" aria-label="Sera 1. kat balkonu — büyüt">
+          <img src="gorseller/thumb/15_sera_balkon.jpg" alt="Sera 1. kat balkonu" loading="lazy">
+        </button>
+        <figcaption><b>15</b> Sera 1. kat balkonu</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/16_linden_twice_balkon.jpg" data-cap="16 · Linden Twice balkonu" aria-label="Linden Twice balkonu — büyüt">
+          <img src="gorseller/thumb/16_linden_twice_balkon.jpg" alt="Linden Twice balkonu" loading="lazy">
+        </button>
+        <figcaption><b>16</b> Linden Twice balkonu</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/17_koza_teras.jpg" data-cap="17 · Koza çatı terası" aria-label="Koza çatı terası — büyüt">
+          <img src="gorseller/thumb/17_koza_teras.jpg" alt="Koza çatı terası" loading="lazy">
+        </button>
+        <figcaption><b>17</b> Koza çatı terası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/18_rose_balkon.jpg" data-cap="18 · Rose üst kat galeri balkonu" aria-label="Rose üst kat galeri balkonu — büyüt">
+          <img src="gorseller/thumb/18_rose_balkon.jpg" alt="Rose üst kat galeri balkonu" loading="lazy">
+        </button>
+        <figcaption><b>18</b> Rose üst kat galeri balkonu</figcaption>
+      </figure>
+      <p class="grp">İç mekân</p>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i01_A_z_salon.jpg" data-cap="19 · Koza — Salon" aria-label="Koza — Salon — büyüt">
+          <img src="gorseller/thumb/i01_A_z_salon.jpg" alt="Koza — Salon" loading="lazy">
+        </button>
+        <figcaption><b>19</b> Koza — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i02_A_z_yemek.jpg" data-cap="20 · Koza — Yemek alanı" aria-label="Koza — Yemek alanı — büyüt">
+          <img src="gorseller/thumb/i02_A_z_yemek.jpg" alt="Koza — Yemek alanı" loading="lazy">
+        </button>
+        <figcaption><b>20</b> Koza — Yemek alanı</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i03_A_z_mutfak.jpg" data-cap="21 · Koza — Mutfak" aria-label="Koza — Mutfak — büyüt">
+          <img src="gorseller/thumb/i03_A_z_mutfak.jpg" alt="Koza — Mutfak" loading="lazy">
+        </button>
+        <figcaption><b>21</b> Koza — Mutfak</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i04_A_k1_ebeveyn.jpg" data-cap="22 · Koza — Ebeveyn yatak odası" aria-label="Koza — Ebeveyn yatak odası — büyüt">
+          <img src="gorseller/thumb/i04_A_k1_ebeveyn.jpg" alt="Koza — Ebeveyn yatak odası" loading="lazy">
+        </button>
+        <figcaption><b>22</b> Koza — Ebeveyn yatak odası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i06_A2_z_mutfak.jpg" data-cap="23 · Linden Twice — Salon + mutfak" aria-label="Linden Twice — Salon + mutfak — büyüt">
+          <img src="gorseller/thumb/i06_A2_z_mutfak.jpg" alt="Linden Twice — Salon + mutfak" loading="lazy">
+        </button>
+        <figcaption><b>23</b> Linden Twice — Salon + mutfak</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i07_A2_k1_yatak1.jpg" data-cap="24 · Linden Twice — Yatak odası" aria-label="Linden Twice — Yatak odası — büyüt">
+          <img src="gorseller/thumb/i07_A2_k1_yatak1.jpg" alt="Linden Twice — Yatak odası" loading="lazy">
+        </button>
+        <figcaption><b>24</b> Linden Twice — Yatak odası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i08_B_z_salon.jpg" data-cap="25 · Linden Villa One — Salon" aria-label="Linden Villa One — Salon — büyüt">
+          <img src="gorseller/thumb/i08_B_z_salon.jpg" alt="Linden Villa One — Salon" loading="lazy">
+        </button>
+        <figcaption><b>25</b> Linden Villa One — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i10_B2_z_salon.jpg" data-cap="26 · Sera — Salon" aria-label="Sera — Salon — büyüt">
+          <img src="gorseller/thumb/i10_B2_z_salon.jpg" alt="Sera — Salon" loading="lazy">
+        </button>
+        <figcaption><b>26</b> Sera — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i11_B2_k1_ebeveyn.jpg" data-cap="27 · Sera — Ebeveyn yatak odası" aria-label="Sera — Ebeveyn yatak odası — büyüt">
+          <img src="gorseller/thumb/i11_B2_k1_ebeveyn.jpg" alt="Sera — Ebeveyn yatak odası" loading="lazy">
+        </button>
+        <figcaption><b>27</b> Sera — Ebeveyn yatak odası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i12_C_k_salon.jpg" data-cap="28 · Gardenia — Salon" aria-label="Gardenia — Salon — büyüt">
+          <img src="gorseller/thumb/i12_C_k_salon.jpg" alt="Gardenia — Salon" loading="lazy">
+        </button>
+        <figcaption><b>28</b> Gardenia — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i13_C_k_mutfak.jpg" data-cap="29 · Gardenia — Mutfak" aria-label="Gardenia — Mutfak — büyüt">
+          <img src="gorseller/thumb/i13_C_k_mutfak.jpg" alt="Gardenia — Mutfak" loading="lazy">
+        </button>
+        <figcaption><b>29</b> Gardenia — Mutfak</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i14_C_z_yatak.jpg" data-cap="30 · Gardenia — Yatak odası" aria-label="Gardenia — Yatak odası — büyüt">
+          <img src="gorseller/thumb/i14_C_z_yatak.jpg" alt="Gardenia — Yatak odası" loading="lazy">
+        </button>
+        <figcaption><b>30</b> Gardenia — Yatak odası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i15_C2_z_salon.jpg" data-cap="31 · Linden One-2 — Salon" aria-label="Linden One-2 — Salon — büyüt">
+          <img src="gorseller/thumb/i15_C2_z_salon.jpg" alt="Linden One-2 — Salon" loading="lazy">
+        </button>
+        <figcaption><b>31</b> Linden One-2 — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i16_C2_k1_yatak1.jpg" data-cap="32 · Linden One-2 — Yatak odası" aria-label="Linden One-2 — Yatak odası — büyüt">
+          <img src="gorseller/thumb/i16_C2_k1_yatak1.jpg" alt="Linden One-2 — Yatak odası" loading="lazy">
+        </button>
+        <figcaption><b>32</b> Linden One-2 — Yatak odası</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i17_D_z_salon.jpg" data-cap="33 · Linden Triple — Salon" aria-label="Linden Triple — Salon — büyüt">
+          <img src="gorseller/thumb/i17_D_z_salon.jpg" alt="Linden Triple — Salon" loading="lazy">
+        </button>
+        <figcaption><b>33</b> Linden Triple — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i18_D_z_mutfak.jpg" data-cap="34 · Linden Triple — Mutfak" aria-label="Linden Triple — Mutfak — büyüt">
+          <img src="gorseller/thumb/i18_D_z_mutfak.jpg" alt="Linden Triple — Mutfak" loading="lazy">
+        </button>
+        <figcaption><b>34</b> Linden Triple — Mutfak</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i20_E_k_salon.jpg" data-cap="35 · Lavender — Salon" aria-label="Lavender — Salon — büyüt">
+          <img src="gorseller/thumb/i20_E_k_salon.jpg" alt="Lavender — Salon" loading="lazy">
+        </button>
+        <figcaption><b>35</b> Lavender — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i21_E_z_salon.jpg" data-cap="36 · Lavender — Zemin kat salon" aria-label="Lavender — Zemin kat salon — büyüt">
+          <img src="gorseller/thumb/i21_E_z_salon.jpg" alt="Lavender — Zemin kat salon" loading="lazy">
+        </button>
+        <figcaption><b>36</b> Lavender — Zemin kat salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i23_F_k_salon.jpg" data-cap="37 · Rose — Salon" aria-label="Rose — Salon — büyüt">
+          <img src="gorseller/thumb/i23_F_k_salon.jpg" alt="Rose — Salon" loading="lazy">
+        </button>
+        <figcaption><b>37</b> Rose — Salon</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/i24_F_z_mutfak.jpg" data-cap="38 · Rose — Mutfak" aria-label="Rose — Mutfak — büyüt">
+          <img src="gorseller/thumb/i24_F_z_mutfak.jpg" alt="Rose — Mutfak" loading="lazy">
+        </button>
+        <figcaption><b>38</b> Rose — Mutfak</figcaption>
+      </figure>
+      <p class="grp">Site içi, çevre ve gün batımı</p>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s01.jpg" data-cap="39 · Avlu havuzu, doğu tarafından" aria-label="Avlu havuzu, doğu tarafından — büyüt">
+          <img src="gorseller/thumb/s01.jpg" alt="Avlu havuzu, doğu tarafından" loading="lazy">
+        </button>
+        <figcaption><b>39</b> Avlu havuzu, doğu tarafından</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s02.jpg" data-cap="40 · Avlu bahçe yolu (kuzey sıra)" aria-label="Avlu bahçe yolu (kuzey sıra) — büyüt">
+          <img src="gorseller/thumb/s02.jpg" alt="Avlu bahçe yolu (kuzey sıra)" loading="lazy">
+        </button>
+        <figcaption><b>40</b> Avlu bahçe yolu (kuzey sıra)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s04.jpg" data-cap="41 · Kompleks doğu sokağı" aria-label="Kompleks doğu sokağı — büyüt">
+          <img src="gorseller/thumb/s04.jpg" alt="Kompleks doğu sokağı" loading="lazy">
+        </button>
+        <figcaption><b>41</b> Kompleks doğu sokağı</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s05.jpg" data-cap="42 · Yeşil park, villalara doğru" aria-label="Yeşil park, villalara doğru — büyüt">
+          <img src="gorseller/thumb/s05.jpg" alt="Yeşil park, villalara doğru" loading="lazy">
+        </button>
+        <figcaption><b>42</b> Yeşil park, villalara doğru</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s06.jpg" data-cap="43 · Linden sırası, kuzeyden güneye" aria-label="Linden sırası, kuzeyden güneye — büyüt">
+          <img src="gorseller/thumb/s06.jpg" alt="Linden sırası, kuzeyden güneye" loading="lazy">
+        </button>
+        <figcaption><b>43</b> Linden sırası, kuzeyden güneye</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s07.jpg" data-cap="44 · Doğu sokağı, kuzeyden (dağlara doğru)" aria-label="Doğu sokağı, kuzeyden (dağlara doğru) — büyüt">
+          <img src="gorseller/thumb/s07.jpg" alt="Doğu sokağı, kuzeyden (dağlara doğru)" loading="lazy">
+        </button>
+        <figcaption><b>44</b> Doğu sokağı, kuzeyden (dağlara doğru)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s08.jpg" data-cap="45 · Koza yolu, kuzeyden güneye" aria-label="Koza yolu, kuzeyden güneye — büyüt">
+          <img src="gorseller/thumb/s08.jpg" alt="Koza yolu, kuzeyden güneye" loading="lazy">
+        </button>
+        <figcaption><b>45</b> Koza yolu, kuzeyden güneye</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s09.jpg" data-cap="46 · Gardenia kuzey yolu" aria-label="Gardenia kuzey yolu — büyüt">
+          <img src="gorseller/thumb/s09.jpg" alt="Gardenia kuzey yolu" loading="lazy">
+        </button>
+        <figcaption><b>46</b> Gardenia kuzey yolu</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s10.jpg" data-cap="47 · Gardenia havuzu, doğudan" aria-label="Gardenia havuzu, doğudan — büyüt">
+          <img src="gorseller/thumb/s10.jpg" alt="Gardenia havuzu, doğudan" loading="lazy">
+        </button>
+        <figcaption><b>47</b> Gardenia havuzu, doğudan</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s11.jpg" data-cap="48 · Ana yoldan site girişine yaklaşım" aria-label="Ana yoldan site girişine yaklaşım — büyüt">
+          <img src="gorseller/thumb/s11.jpg" alt="Ana yoldan site girişine yaklaşım" loading="lazy">
+        </button>
+        <figcaption><b>48</b> Ana yoldan site girişine yaklaşım</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/s12.jpg" data-cap="49 · Doğudaki araziden siteye bakış" aria-label="Doğudaki araziden siteye bakış — büyüt">
+          <img src="gorseller/thumb/s12.jpg" alt="Doğudaki araziden siteye bakış" loading="lazy">
+        </button>
+        <figcaption><b>49</b> Doğudaki araziden siteye bakış</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/g03_B_dis_bahce.jpg" data-cap="50 · Linden Villa One — bahçe" aria-label="Linden Villa One — bahçe — büyüt">
+          <img src="gorseller/thumb/g03_B_dis_bahce.jpg" alt="Linden Villa One — bahçe" loading="lazy">
+        </button>
+        <figcaption><b>50</b> Linden Villa One — bahçe</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/g04_B2_dis_havuz.jpg" data-cap="51 · Sera — havuz" aria-label="Sera — havuz — büyüt">
+          <img src="gorseller/thumb/g04_B2_dis_havuz.jpg" alt="Sera — havuz" loading="lazy">
+        </button>
+        <figcaption><b>51</b> Sera — havuz</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/g05_C2_dis_arka.jpg" data-cap="52 · Linden One-2 — arka bahçe" aria-label="Linden One-2 — arka bahçe — büyüt">
+          <img src="gorseller/thumb/g05_C2_dis_arka.jpg" alt="Linden One-2 — arka bahçe" loading="lazy">
+        </button>
+        <figcaption><b>52</b> Linden One-2 — arka bahçe</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/g06_D_dis_arka.jpg" data-cap="53 · Linden Triple — arka bahçe" aria-label="Linden Triple — arka bahçe — büyüt">
+          <img src="gorseller/thumb/g06_D_dis_arka.jpg" alt="Linden Triple — arka bahçe" loading="lazy">
+        </button>
+        <figcaption><b>53</b> Linden Triple — arka bahçe</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/d01_avlu_havuz.jpg" data-cap="54 · Avlu ve buyuk havuz (Lavender / Carnation) (gün batımı)" aria-label="Avlu ve buyuk havuz (Lavender / Carnation) (gün batımı) — büyüt">
+          <img src="gorseller/thumb/d01_avlu_havuz.jpg" alt="Avlu ve buyuk havuz (Lavender / Carnation) (gün batımı)" loading="lazy">
+        </button>
+        <figcaption><b>54</b> Avlu ve buyuk havuz (Lavender / Carnation) (gün batımı)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/d02_gardenia.jpg" data-cap="55 · Gardenia A/B onu (gün batımı)" aria-label="Gardenia A/B onu (gün batımı) — büyüt">
+          <img src="gorseller/thumb/d02_gardenia.jpg" alt="Gardenia A/B onu (gün batımı)" loading="lazy">
+        </button>
+        <figcaption><b>55</b> Gardenia A/B onu (gün batımı)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/d04_linden_one_havuz.jpg" data-cap="56 · Linden One ve yuvarlak havuzlu teras (gün batımı)" aria-label="Linden One ve yuvarlak havuzlu teras (gün batımı) — büyüt">
+          <img src="gorseller/thumb/d04_linden_one_havuz.jpg" alt="Linden One ve yuvarlak havuzlu teras (gün batımı)" loading="lazy">
+        </button>
+        <figcaption><b>56</b> Linden One ve yuvarlak havuzlu teras (gün batımı)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/d05_linden_twice.jpg" data-cap="57 · Linden Twice sirasi (gün batımı)" aria-label="Linden Twice sirasi (gün batımı) — büyüt">
+          <img src="gorseller/thumb/d05_linden_twice.jpg" alt="Linden Twice sirasi (gün batımı)" loading="lazy">
+        </button>
+        <figcaption><b>57</b> Linden Twice sirasi (gün batımı)</figcaption>
+      </figure>
+      <figure class="still">
+        <button type="button" data-full="gorseller/full/d06_giris.jpg" data-cap="58 · Giris — ana yola bakis (gün batımı)" aria-label="Giris — ana yola bakis (gün batımı) — büyüt">
+          <img src="gorseller/thumb/d06_giris.jpg" alt="Giris — ana yola bakis (gün batımı)" loading="lazy">
+        </button>
+        <figcaption><b>58</b> Giris — ana yola bakis (gün batımı)</figcaption>
+      </figure>
+      <p class="grp">Geniş üstten görünüm</p>
+      <figure class="still wide">
+        <button type="button" data-full="gorseller/full/h01_ust_guney.jpg" data-cap="59 · Geniş üstten görünüm — dağlara doğru" aria-label="Geniş üstten görünüm — dağlara doğru — büyüt">
+          <img src="gorseller/thumb/h01_ust_guney.jpg" alt="Geniş üstten görünüm — dağlara doğru" loading="lazy">
+        </button>
+        <figcaption><b>59</b> Geniş üstten görünüm — dağlara doğru</figcaption>
+      </figure>
+      <figure class="still wide">
+        <button type="button" data-full="gorseller/full/h02_ust_kuzey.jpg" data-cap="60 · Geniş üstten görünüm — denize doğru" aria-label="Geniş üstten görünüm — denize doğru — büyüt">
+          <img src="gorseller/thumb/h02_ust_kuzey.jpg" alt="Geniş üstten görünüm — denize doğru" loading="lazy">
+        </button>
+        <figcaption><b>60</b> Geniş üstten görünüm — denize doğru</figcaption>
+      </figure>
+    </div>
+
+    <footer>
+      <p>Görseller temsilidir; ölçüler projeye aittir. Mobilya, bitki ve doku varlıkları: Poly Haven, ambientCG (CC0).</p>
+      <p>Çevre: Copernicus DEM © DLR e.V. 2010-2014 ve © Airbus Defence and Space GmbH 2014-2018, Avrupa Birliği ve ESA tarafından COPERNICUS kapsamında sağlanmıştır. Contains modified Copernicus Sentinel data 2025, 2026. Harita verisi © OpenStreetMap katkıcıları (ODbL).</p>
+    </footer>
+  </div>
+
+  <dialog id="lb" aria-label="Görsel">
+    <div class="lb">
+      <img alt="">
+      <p></p>
+      <button class="x" type="button" aria-label="Kapat">×</button>
+      <button class="prev" type="button" aria-label="Önceki">‹</button>
+      <button class="next" type="button" aria-label="Sonraki">›</button>
+    </div>
+  </dialog>
+  <script>
+    const items = [...document.querySelectorAll('.still button')], dlg = document.getElementById('lb');
+    const img = dlg.querySelector('img'), cap = dlg.querySelector('p'); let cur = 0;
+    const show = i => { cur = (i + items.length) % items.length; const b = items[cur]; img.src = b.dataset.full; img.alt = b.dataset.cap; cap.textContent = b.dataset.cap; };
+    items.forEach((b, i) => b.addEventListener('click', () => { show(i); dlg.showModal(); }));
+    dlg.querySelector('.x').onclick = () => dlg.close();
+    dlg.querySelector('.prev').onclick = () => show(cur - 1);
+    dlg.querySelector('.next').onclick = () => show(cur + 1);
+    dlg.addEventListener('click', e => { if (e.target === dlg || e.target.classList.contains('lb')) dlg.close(); });
+    // ---- site plan
+    const PD = {"box":[-90,100,-180,170],"cams":[{"i":0,"n":"01","x":40.84,"y":-34.01,"h":134.1,"t":"Girişten ana yola bakış","air":false},{"i":1,"n":"02","x":46.28,"y":-108.33,"h":-108.8,"t":"Avlu ve büyük havuz (Lavender / Carnation)","air":false},{"i":2,"n":"03","x":14.0,"y":-127.5,"h":90.0,"t":"Spor alanı ve çocuk oyun alanı","air":false},{"i":3,"n":"04","x":30.83,"y":-32.33,"h":102.0,"t":"Sera sokağı","air":false},{"i":4,"n":"05","x":-11.95,"y":-23.18,"h":102.9,"t":"Linden Twice sırası","air":false},{"i":5,"n":"06","x":-61.11,"y":105.18,"h":-58.4,"t":"Koza villaları ve havuzları","air":false},{"i":6,"n":"07","x":-4.01,"y":87.78,"h":112.8,"t":"Gardenia A/B önü","air":false},{"i":7,"n":"08","x":-34.1,"y":107.7,"h":-41.6,"t":"Linden One ve yuvarlak havuzlu teras","air":false},{"i":8,"n":"09","x":-17.06,"y":-96.81,"h":-83.5,"t":"Rose / Begonvil tarafı ve otopark","air":false},{"i":9,"n":"10","x":81.97,"y":-155.82,"h":130.9,"t":"Havadan genel görünüm","air":true},{"i":10,"n":"11","x":-54.35,"y":135.01,"h":-65.3,"t":"Gardenia çatı terası","air":false},{"i":11,"n":"12","x":-50.43,"y":129.49,"h":-46.9,"t":"Gardenia 1. kat balkonu","air":false},{"i":12,"n":"13","x":-2.08,"y":-99.18,"h":-29.4,"t":"Lavender üst kat galerisinden havuz avlusuna","air":false},{"i":13,"n":"14","x":-15.54,"y":-70.8,"h":81.1,"t":"Linden Triple çatı terası","air":false},{"i":14,"n":"15","x":-1.88,"y":5.98,"h":-109.2,"t":"Sera 1. kat balkonu","air":false},{"i":15,"n":"16","x":-33.79,"y":17.95,"h":159.8,"t":"Linden Twice balkonu","air":false},{"i":16,"n":"17","x":-42.97,"y":93.55,"h":12.1,"t":"Koza çatı terası","air":false},{"i":17,"n":"18","x":-7.93,"y":-121.63,"h":90.0,"t":"Rose üst kat galeri balkonu","air":false},{"i":35,"n":"36","x":-3.91,"y":-95.8,"h":100.2,"t":"Lavender — Zemin kat salon","air":false},{"i":38,"n":"39","x":50,"y":-132,"h":146.3,"t":"Avlu havuzu, doğu tarafından","air":false},{"i":39,"n":"40","x":6,"y":-109,"h":-2.7,"t":"Avlu bahçe yolu (kuzey sıra)","air":false},{"i":40,"n":"41","x":77,"y":-85,"h":-90.0,"t":"Kompleks doğu sokağı","air":false},{"i":41,"n":"42","x":30,"y":-70,"h":95.7,"t":"Yeşil park, villalara doğru","air":false},{"i":42,"n":"43","x":-26,"y":52,"h":-77.4,"t":"Linden sırası, kuzeyden güneye","air":false},{"i":43,"n":"44","x":23,"y":60,"h":-94.4,"t":"Doğu sokağı, kuzeyden (dağlara doğru)","air":false},{"i":44,"n":"45","x":-58,"y":90,"h":-90.0,"t":"Koza yolu, kuzeyden güneye","air":false},{"i":45,"n":"46","x":-45,"y":152,"h":-23.1,"t":"Gardenia kuzey yolu","air":false},{"i":46,"n":"47","x":-5,"y":93,"h":149.0,"t":"Gardenia havuzu, doğudan","air":false},{"i":47,"n":"48","x":95,"y":-27,"h":178.4,"t":"Ana yoldan site girişine yaklaşım","air":false},{"i":48,"n":"49","x":75,"y":30,"h":171.3,"t":"Doğudaki araziden siteye bakış","air":false},{"i":50,"n":"51","x":-13.7,"y":24.52,"h":-50.2,"t":"Sera — havuz","air":false},{"i":53,"n":"54","x":46.28,"y":-108.33,"h":-108.8,"t":"Avlu ve buyuk havuz (Lavender / Carnation) (gün batımı)","air":false},{"i":54,"n":"55","x":-4.01,"y":87.78,"h":112.8,"t":"Gardenia A/B onu (gün batımı)","air":false},{"i":55,"n":"56","x":-34.1,"y":107.7,"h":-41.6,"t":"Linden One ve yuvarlak havuzlu teras (gün batımı)","air":false},{"i":56,"n":"57","x":-11.95,"y":-23.18,"h":102.9,"t":"Linden Twice sirasi (gün batımı)","air":false},{"i":57,"n":"58","x":40.84,"y":-34.01,"h":134.1,"t":"Giris — ana yola bakis (gün batımı)","air":false}],"houses":[{"x":-25.46,"y":1.4,"slug":"linden-twice","name":"Linden Twice Villa A Blok","tour":"Linden Twice Villa B Blok","pts":18},{"x":-29.87,"y":23.08,"slug":"linden-twice","name":"Linden Twice Villa B Blok","tour":"Linden Twice Villa B Blok","pts":18},{"x":-34.13,"y":44.02,"slug":"linden-twice","name":"Linden Twice Villa C Blok","tour":"Linden Twice Villa B Blok","pts":18},{"x":-38.34,"y":64.71,"slug":"linden-twice","name":"Linden Twice Villa D Blok","tour":"Linden Twice Villa B Blok","pts":18}]};
+    const box = document.getElementById('planBox'), tip = document.getElementById('planTip'), pop = document.getElementById('planPop');
+    const wide = matchMedia('(min-width: 760px)');
+    const [X0, X1, Y0, Y1] = PD.box;
+    const at = (x, y) => { const u = (x - X0) / (X1 - X0), v = (Y1 - y) / (Y1 - Y0); return wide.matches ? [1 - v, u] : [u, v]; };
+    const rot = h => wide.matches ? 90 - h : -h;   // site heading (0 = +X, ccw) -> css rotate (cw)
+    const HOUSE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3z"/></svg>';
+    const lyC = document.getElementById('lyCams'), lyH = document.getElementById('lyHouses');
+    const showTip = (el, txt) => { tip.textContent = txt; tip.style.left = el.style.left; tip.style.top = el.style.top; tip.style.display = 'block'; };
+    const hideTip = () => tip.style.display = 'none';
+    PD.houses.forEach(h => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'mk house'; b.innerHTML = HOUSE_SVG;
+      b.setAttribute('aria-label', h.name + ' — 360° tur'); b.dataset.slug = h.slug; b._d = h;
+      b.addEventListener('mouseenter', () => { showTip(b, h.name); lyH.querySelectorAll(`[data-slug="${h.slug}"]`).forEach(o => o.classList.add('hl')); });
+      b.addEventListener('mouseleave', () => { hideTip(); lyH.querySelectorAll('.hl').forEach(o => o.classList.remove('hl')); });
+      b.addEventListener('click', e => { e.stopPropagation(); openPop(b, h); });
+      lyH.appendChild(b);
+    });
+    PD.cams.forEach(c => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'mk cam' + (c.air ? ' air' : '');
+      b.innerHTML = '<span class="cone"></span>' + c.n; b.setAttribute('aria-label', c.n + ' ' + c.t + ' — görseli aç'); b._d = c;
+      b.addEventListener('mouseenter', () => showTip(b, c.n + '  ' + c.t)); b.addEventListener('mouseleave', hideTip);
+      b.addEventListener('click', e => { e.stopPropagation(); hideTip(); closePop(); show(c.i); dlg.showModal(); });
+      lyC.appendChild(b);
+    });
+    function place() {
+      document.querySelectorAll('#planBox .mk').forEach(b => {
+        const [u, v] = at(b._d.x, b._d.y); b.style.left = (u * 100) + '%'; b.style.top = (v * 100) + '%';
+        const cone = b.querySelector('.cone'); if (cone) cone.style.transform = `rotate(${rot(b._d.h)}deg)`;
+      });
+      closePop(); hideTip();
+    }
+    function openPop(b, h) {
+      pop.querySelector('img').src = 'kapak/' + h.slug + '.jpg'; pop.querySelector('img').alt = h.tour;
+      pop.querySelector('h3').textContent = h.name;
+      pop.querySelector('p').textContent = (h.tour !== h.name ? h.tour + ' turu · ' : '') + h.pts + ' panorama noktası';
+      pop.querySelector('a').href = h.slug + '/';
+      pop.style.display = 'block';
+      const W = box.clientWidth, H = box.clientHeight, pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const mx = b.offsetLeft, my = b.offsetTop;
+      let x = mx + 18, y = my - ph / 2;
+      if (x + pw > W - 8) x = mx - 18 - pw;
+      if (x < 8) x = Math.max(8, Math.min(W - pw - 8, mx - pw / 2));
+      y = Math.max(8, Math.min(H - ph - 8, y));
+      pop.style.left = x + 'px'; pop.style.top = y + 'px';
+      hideTip();
+    }
+    function closePop() { pop.style.display = 'none'; }
+    pop.querySelector('.x').onclick = closePop;
+    box.addEventListener('click', e => { if (!pop.contains(e.target)) closePop(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePop(); });
+    document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+      const on = ch.getAttribute('aria-pressed') !== 'true'; ch.setAttribute('aria-pressed', on);
+      (ch.dataset.layer === 'cams' ? lyC : lyH).classList.toggle('off', !on); closePop();
+    }));
+    wide.addEventListener('change', place); place();
+    dlg.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+  </script>
+</body>
+</html>

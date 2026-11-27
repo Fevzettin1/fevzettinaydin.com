@@ -1,0 +1,13 @@
+:HL["/glorious-life/next-assets/static/chunks/3z7pigtohiqod.css","style"]
+:HL["/glorious-life/next-assets/static/media/276a8f4fe816cb6b-s.p.2v2sz4qlut9s1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/glorious-life/next-assets/static/media/6f3ab718e3727c1a-s.p.3huc2loe0ie8a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/glorious-life/next-assets/static/media/82450a180bcad83c-s.p.0p-wng2nn8o-p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/glorious-life/next-assets/static/media/9eff0a3f1ba11d74-s.p.3aak_kra40y8r.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/glorious-life/next-assets/static/media/fbb7028efdf70529-s.p.1_0gbi-gsbqmd.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/glorious-life/next-assets/static/media/fdbf446d127afa2d-s.p.1xjn85gt7t6qs.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+5:[["children",{"s":"__PAGE__","h":160}]]
+4:[["children",{"s":{"n":"code","t":"d","k":"B-08","s":[]},"h":96,"c":"$Q5"}]]
+3:[["children",{"s":"availability","h":64,"c":"$Q4"}]]
+2:[["children",{"s":{"n":"locale","t":"d","k":"en","s":[]},"h":48,"c":"$Q3"}]]
+1:[["children",{"s":"(frontend)","h":112,"c":"$Q2"}]]
+0:{"b":"sI_vYiW-6lugvTf8CHYAY","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

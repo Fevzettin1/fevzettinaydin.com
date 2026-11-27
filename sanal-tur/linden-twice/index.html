@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#111" />
+  <title>Linden Twice Villa B Blok — Sanal Tur</title>
+  <script type="module" crossorigin src="./assets/index-BskBOxk6.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-p1IlzuE6.css">
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="labels"></div>
+
+  <header id="topbar">
+    <div class="brand">
+      <div class="title" id="tourTitle">Linden Twice Villa B Blok</div>
+      <div class="sub" id="tourSub">Sanal Tur</div>
+    </div>
+    <div class="where">
+      <span class="level" id="curLevel"></span>
+      <span class="room" id="curRoom"></span>
+    </div>
+    <div class="tools">
+      <button id="btnRotate" title="Otomatik döndür (R)" aria-label="Otomatik döndür">
+        <svg viewBox="0 0 24 24"><path d="M12 5V2L8 6l4 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+      </button>
+      <button id="btnRooms" title="Odalar (O)" aria-label="Odalar">
+        <svg viewBox="0 0 24 24"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>
+      </button>
+      <button id="btnInfo" title="Bilgi" aria-label="Bilgi">
+        <svg viewBox="0 0 24 24"><path d="M11 10h2v7h-2zM11 7h2v2h-2z"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <button id="btnFull" title="Tam ekran (F)" aria-label="Tam ekran">
+        <svg viewBox="0 0 24 24"><path d="M4 9V4h5v2H6v3zM15 4h5v5h-2V6h-3zM18 15h2v5h-5v-2h3zM4 15h2v3h3v2H4z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <aside id="minimap">
+    <div class="tabs" id="levelTabs"></div>
+    <svg id="mapSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+  </aside>
+
+  <nav id="rooms" class="hidden">
+    <div class="rooms-inner" id="roomsInner"></div>
+  </nav>
+
+  <div id="hint">Sürükleyerek etrafa bakın · yerdeki halkalara tıklayarak ilerleyin</div>
+
+  <div id="info" class="hidden">
+    <div class="card">
+      <button class="close" id="infoClose" aria-label="Kapat">×</button>
+      <h2 id="infoTitle">Linden Twice Villa B Blok</h2>
+      <p>Bu sanal tur, projenin mimari DWG çizimlerinden otomatik olarak üretilmiş 3B modelin fiziksel tabanlı
+        (Blender Cycles) 360° görselleştirmeleridir.</p>
+      <ul>
+        <li><b>Kontroller:</b> sürükle = bak, tekerlek / iki parmak = yakınlaş, halkalar = git, harita noktaları = atla.</li>
+        <li><b>Kısayollar:</b> ← → ↑ ↓ bak, + / − yakınlaş, R döndür, O odalar, F tam ekran.</li>
+      </ul>
+      <p class="small">Mobilya, bitki ve doku varlıkları: Poly Haven, ambientCG (CC0). Görseller temsilidir; ölçüler projeye aittir.</p>
+      <p class="small">Çevre: Copernicus DEM © DLR e.V. 2010-2014 ve © Airbus Defence and Space GmbH 2014-2018, Avrupa Birliği ve ESA tarafından COPERNICUS kapsamında sağlanmıştır. Contains modified Copernicus Sentinel data 2025, 2026. Harita verisi © OpenStreetMap katkıcıları (ODbL).</p>
+    </div>
+  </div>
+
+  <div id="loader"><div class="spin"></div><div id="loadTxt">Yükleniyor…</div></div>
+</body>
+</html>
